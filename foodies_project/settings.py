@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-import dj_database_url  
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,12 +59,21 @@ TEMPLATES = [
 WSGI_APPLICATION = "foodies_project.wsgi.application"
 
 # Database (SQLite by default, can switch to PostgreSQL if needed)
+import dj_database_url  # add this at the top with your other imports
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Override with Render’s DATABASE_URL if it exists
+DATABASES['default'] = dj_database_url.config(
+    default=DATABASES['default'],
+    conn_max_age=600,
+    ssl_require=False
+)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
