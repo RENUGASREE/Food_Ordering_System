@@ -1,0 +1,92 @@
+[
+  {
+    "model": "orders.menuitem",
+    "pk": "B1",
+    "fields": {
+      "name": "Classic Burger",
+      "price": "120.00",
+      "category": "Burgers",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "B2",
+    "fields": {
+      "name": "Chicken Burger",
+      "price": "150.00",
+      "category": "Burgers",
+      "is_veg": false
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "P1",
+    "fields": {
+      "name": "Margherita Pizza",
+      "price": "250.00",
+      "category": "Pizzas",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "P2",
+    "fields": {
+      "name": "Paneer Tikka Pizza",
+      "price": "300.00",
+      "category": "Pizzas",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "P3",
+    "fields": {
+      "name": "Chicken Supreme Pizza",
+      "price": "340.00",
+      "category": "Pizzas",
+      "is_veg": false
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "S1",
+    "fields": {
+      "name": "French Fries",
+      "price": "80.00",
+      "category": "Sides",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "S2",
+    "fields": {
+      "name": "Peri Peri Fries",
+      "price": "110.00",
+      "category": "Sides",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "D1",
+    "fields": {
+      "name": "Coke",
+      "price": "40.00",
+      "category": "Drinks",
+      "is_veg": true
+    }
+  },
+  {
+    "model": "orders.menuitem",
+    "pk": "D2",
+    "fields": {
+      "name": "Lemon Iced Tea",
+      "price": "70.00",
+      "category": "Drinks",
+      "is_veg": true
+    }
+  }
+]

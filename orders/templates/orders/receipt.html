@@ -1,0 +1,30 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="m-0">Receipt</h2>
+  <div class="d-flex gap-2">
+    <a class="btn btn-success" href="{% url 'receipt_pdf' order.id %}">Download PDF</a>
+    <a class="btn btn-outline-secondary" href="{% url 'menu' %}">Back to menu</a>
+  </div>
+</div>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p class="mb-1"><strong>Order #{{ order.id }}</strong></p>
+    <p class="text-muted">Customer: {{ order.customer.name }} ({{ order.customer.phone }})</p>
+    <div class="table-responsive">
+      <table class="table">
+        <thead><tr><th>Item</th><th>Qty</th><th class="text-end">Line Total</th></tr></thead>
+        <tbody>
+          {% for line in order.lines.all %}
+          <tr>
+            <td>{{ line.item.name }}</td>
+            <td>{{ line.qty }}</td>
+            <td class="text-end">₹{{ line.line_total }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

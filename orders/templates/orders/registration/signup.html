@@ -1,0 +1,76 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+<h2 class="mb-3">Create an account</h2>
+<form method="post" class="card p-4 shadow-sm" novalidate>
+  {% csrf_token %}
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger">
+      {{ form.non_field_errors }}
+    </div>
+  {% endif %}
+
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+      <div class="text-danger small">{{ form.username.errors.0 }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <div class="input-group">
+      {{ form.password1 }}
+      <button class="btn btn-outline-secondary" type="button" id="togglePassword1">
+        <i class="bi bi-eye"></i>
+      </button>
+    </div>
+    <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+    {% if form.password1.errors %}
+      <div class="text-danger small">{{ form.password1.errors.0 }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+    <div class="input-group">
+      {{ form.password2 }}
+      <button class="btn btn-outline-secondary" type="button" id="togglePassword2">
+        <i class="bi bi-eye"></i>
+      </button>
+    </div>
+    {% if form.password2.errors %}
+      <div class="text-danger small">{{ form.password2.errors.0 }}</div>
+    {% endif %}
+  </div>
+
+  <button class="btn btn-primary" type="submit">Sign up</button>
+  <a class="btn btn-link" href="{% url 'login' %}">Already have an account?</a>
+</form>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function setupToggle(toggleId, fieldId) {
+      const toggle = document.getElementById(toggleId);
+      const field = document.getElementById(fieldId);
+      const icon = toggle.querySelector("i");
+
+      toggle.addEventListener("click", function () {
+        const type = field.getAttribute("type") === "password" ? "text" : "password";
+        field.setAttribute("type", type);
+
+        if (type === "password") {
+          icon.classList.remove("bi-eye-slash");
+          icon.classList.add("bi-eye");
+        } else {
+          icon.classList.remove("bi-eye");
+          icon.classList.add("bi-eye-slash");
+        }
+      });
+    }
+    setupToggle("togglePassword1", "id_password1");
+    setupToggle("togglePassword2", "id_password2");
+  });
+</script>
+{% endblock %}

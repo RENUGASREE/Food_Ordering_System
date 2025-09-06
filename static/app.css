@@ -1,0 +1,4 @@
+/* Minimal custom styling for a cleaner look */
+body { background-color: #fafafa; }
+.card { border-radius: 1rem; }
+.navbar-brand { letter-spacing: .5px; }
